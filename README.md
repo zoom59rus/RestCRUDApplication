@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/zoom59rus/HibernateCRUDApplication.svg?branch=master)](https://travis-ci.org/zoom59rus/HibernateCRUDApplication)
-# Module_2_3
+# Module_2_4
 # Реализовать REST API приложение
 
 ## Постанока задачи
