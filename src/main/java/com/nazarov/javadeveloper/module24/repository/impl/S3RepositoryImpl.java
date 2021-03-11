@@ -22,45 +22,45 @@ public class S3RepositoryImpl implements S3Repository {
                 .build();
     }
 
-    public S3Object upload(String path) {
+    public S3Object upload(String path, String bucket) {
         File file = new File(path);
         PutObjectRequest por = PutObjectRequest.builder()
-                .bucket("module24")
+                .bucket(bucket)
                 .key(file.getName())
                 .build();
         s3Client.putObject(por, file.toPath());
 
-        return get(file.getName());
+        return get(bucket, file.getName());
     }
 
     @Override
-    public List<S3Object> getFileList() {
+    public List<S3Object> getFileList(String bucket) {
         ListObjectsRequest request = ListObjectsRequest.builder()
-                .bucket("module24")
+                .bucket(bucket)
                 .build();
         ListObjectsResponse resp = s3Client.listObjects(request);
         return resp.contents();
     }
 
     @Override
-    public S3Object get(String fileName) {
-        return getFileList().stream()
+    public S3Object get(String bucket, String fileName) {
+        return getFileList(bucket).stream()
                 .filter(o -> o.key().equals(fileName))
                 .findFirst()
                 .orElse(null);
     }
 
     @Override
-    public void remove(String fileName) {
+    public void remove(String fileName, String bucket) {
         DeleteObjectRequest request = DeleteObjectRequest.builder()
-                .bucket("module24")
+                .bucket(bucket)
                 .key(fileName)
                 .build();
         s3Client.deleteObject(request);
     }
 
     @Override
-    public void writeObjectToPath(String fileName, String destination){
+    public void writeObjectToPath(String bucket, String fileName, String destination){
         Path path = Paths.get(destination + "/" + fileName);
         if(!Files.exists(path)){
             try {
@@ -70,16 +70,16 @@ public class S3RepositoryImpl implements S3Repository {
             }
         }
         try {
-            Files.write(path, getObjectBytes(fileName), StandardOpenOption.WRITE);
+            Files.write(path, getObjectBytes(fileName, bucket), StandardOpenOption.WRITE);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public byte[] getObjectBytes(String fileName){
+    public byte[] getObjectBytes(String fileName, String bucket){
         GetObjectRequest request = GetObjectRequest.builder()
-                .bucket("module24")
+                .bucket(bucket)
                 .key(fileName)
                 .build();
         return s3Client.getObjectAsBytes(request).asByteArray();

@@ -10,32 +10,32 @@ import java.util.List;
 public class S3ServiceImpl implements S3Service {
     private final S3Repository s3Repository;
 
-    public S3ServiceImpl(S3RepositoryImpl s3Repository) {
-        this.s3Repository = s3Repository;
+    public S3ServiceImpl() {
+        this.s3Repository = new S3RepositoryImpl();
     }
 
     @Override
-    public S3Object upload(String path) {
-        return s3Repository.upload(path);
+    public S3Object upload(String path, String bucket) {
+        return s3Repository.upload(path, bucket);
     }
 
     @Override
-    public List<S3Object> getFileList() {
-        return s3Repository.getFileList();
+    public List<S3Object> getFileList(String bucket) {
+        return s3Repository.getFileList(bucket);
     }
 
     @Override
-    public S3Object get(String fileName) {
-        return s3Repository.get(fileName);
+    public S3Object get(String fileName, String bucket) {
+        return s3Repository.get(fileName, bucket);
     }
 
     @Override
-    public void remove(String fileName) {
-        s3Repository.remove(fileName);
+    public void remove(String fileName, String bucket) {
+        s3Repository.remove(fileName, bucket);
     }
 
     @Override
-    public void download(String fileName, String destination) {
-        s3Repository.writeObjectToPath(fileName, destination);
+    public void download(String bucket, String fileName, String destination) {
+        s3Repository.writeObjectToPath(bucket, fileName, destination);
     }
 }

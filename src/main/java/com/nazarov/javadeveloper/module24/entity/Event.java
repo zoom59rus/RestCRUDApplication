@@ -27,15 +27,11 @@ public class Event {
     private Date time;
 
     @ManyToOne
-    @JoinColumn(name = "users_id", referencedColumnName = "id")
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "files_id", referencedColumnName = "id")
+    @JoinColumn(name = "file_id", referencedColumnName = "id")
     private File file;
 
-    public void setUser(User user){
-        user.addEvent(this);
-        this.user = user;
-    }
 }

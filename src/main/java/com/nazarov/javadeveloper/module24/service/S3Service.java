@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface S3Service {
 
-    S3Object upload(String path);
-    List<S3Object> getFileList();
-    S3Object get(String fileName);
-    void remove(String fileName);
-    void download(String fileName, String destination);
+    S3Object upload(String path, String bucket);
+    List<S3Object> getFileList(String bucket);
+    S3Object get(String fileName, String bucket);
+    void remove(String fileName, String bucket);
+    void download(String bucket, String fileName, String destination);
 }
