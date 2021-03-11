@@ -5,4 +5,32 @@
 <web-app>
   <display-name>Servlets CRUD Application</display-name>
 
+  <servlet>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>com.nazarov.javadeveloper.module24.servlets.UploadServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>ErrorServlet</servlet-name>
+    <servlet-class>com.nazarov.javadeveloper.module24.servlets.ErrorServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>ErrorServlet</servlet-name>
+    <url-pattern>/Error</url-pattern>
+  </servlet-mapping>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/Error</location>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Error</exception-type>
+    <location>/Error</location>
+  </error-page>
 </web-app>
