@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/zoom59rus/RestCRUDApplication.svg?branch=master)](https://travis-ci.org/zoom59rus/RestCRUDApplication)
+
 # Module_2_4
 # Реализовать REST API приложение
 
