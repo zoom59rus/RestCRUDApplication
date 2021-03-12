@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
     public void remove(User user) {
         userRepository.remove(user);
     }
+
+    @Override
+    public User load(Long id) {
+        return userRepository.load(id);
+    }
 }

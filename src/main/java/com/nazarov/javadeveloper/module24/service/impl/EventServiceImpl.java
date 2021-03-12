@@ -5,6 +5,8 @@ import com.nazarov.javadeveloper.module24.repository.EventRepository;
 import com.nazarov.javadeveloper.module24.repository.impl.EventRepositoryImpl;
 import com.nazarov.javadeveloper.module24.service.EventService;
 
+import java.util.List;
+
 public class EventServiceImpl implements EventService {
     private final EventRepository eventRepository;
 
@@ -34,5 +36,10 @@ public class EventServiceImpl implements EventService {
     @Override
     public void remove(Event event) {
         eventRepository.remove(event);
+    }
+
+    @Override
+    public List<Event> getAll(Long userId) {
+        return eventRepository.getAll(userId);
     }
 }

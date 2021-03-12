@@ -69,6 +69,13 @@ public abstract class GenericRepositoryImpl<T, ID extends Serializable> implemen
         }
     }
 
+    @Override
+    public T load(ID id){
+        try(Session session = getSession()){
+            return session.load(entity, id);
+        }
+    }
+
     protected Session getSession(){
         return sessionFactory.openSession();
     }

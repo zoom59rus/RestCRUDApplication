@@ -5,6 +5,8 @@ import com.nazarov.javadeveloper.module24.repository.FileRepository;
 import com.nazarov.javadeveloper.module24.repository.impl.FileRepositoryImpl;
 import com.nazarov.javadeveloper.module24.service.FileService;
 
+import java.util.List;
+
 public class FileServiceImpl implements FileService {
     private final FileRepository fileRepository;
 
@@ -34,5 +36,10 @@ public class FileServiceImpl implements FileService {
     @Override
     public void remove(File file) {
         fileRepository.remove(file);
+    }
+
+    @Override
+    public List<File> getAll(Long userId) {
+        return fileRepository.getAll(userId);
     }
 }

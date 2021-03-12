@@ -9,6 +9,22 @@
     <servlet-name>UploadServlet</servlet-name>
     <servlet-class>com.nazarov.javadeveloper.module24.servlets.UploadServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>InformServlet</servlet-name>
+    <servlet-class>com.nazarov.javadeveloper.module24.servlets.InformServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteFileServlet</servlet-name>
+    <servlet-class>com.nazarov.javadeveloper.module24.servlets.DeleteFileServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>com.nazarov.javadeveloper.module24.servlets.DownloadServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>EventServlet</servlet-name>
+    <servlet-class>com.nazarov.javadeveloper.module24.servlets.EventServlet</servlet-class>
+  </servlet>
 
   <servlet>
     <servlet-name>ErrorServlet</servlet-name>
@@ -19,10 +35,26 @@
     <servlet-name>UploadServlet</servlet-name>
     <url-pattern>/upload</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>InformServlet</servlet-name>
+    <url-pattern>/users/get</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteFileServlet</servlet-name>
+    <url-pattern>/del/file</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EventServlet</servlet-name>
+    <url-pattern>/info/event</url-pattern>
+  </servlet-mapping>
 
   <servlet-mapping>
     <servlet-name>ErrorServlet</servlet-name>
     <url-pattern>/Error</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/download</url-pattern>
   </servlet-mapping>
 
   <error-page>

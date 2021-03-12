@@ -4,6 +4,7 @@ package com.nazarov.javadeveloper.module24.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -28,10 +29,12 @@ public class Event {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ToString.Exclude
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "file_id", referencedColumnName = "id")
+    @ToString.Exclude
     private File file;
 
 }

@@ -3,6 +3,8 @@ package com.nazarov.javadeveloper.module24;
 import com.nazarov.javadeveloper.module24.entity.Event;
 import com.nazarov.javadeveloper.module24.entity.File;
 import com.nazarov.javadeveloper.module24.entity.User;
+import com.nazarov.javadeveloper.module24.service.MainService;
+import com.nazarov.javadeveloper.module24.service.impl.MainServiceImpl;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -35,6 +37,20 @@ public class ObjectFactory {
                 .addAnnotatedClass(File.class)
                 .addAnnotatedClass(User.class)
                 .buildSessionFactory();
+    }
+
+    private MainServiceImpl createMainService(){
+        return new MainServiceImpl();
+    }
+
+    public MainServiceImpl getMainService(){
+        MainServiceImpl mainServiceImpl = (MainServiceImpl) beans.get("MainService");
+        if(mainServiceImpl == null){
+            beans.put("MainService", createMainService());
+            mainServiceImpl = (MainServiceImpl) beans.get("MainService");
+        }
+
+        return mainServiceImpl;
     }
 
     public SessionFactory getSessionFactory(){

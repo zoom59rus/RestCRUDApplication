@@ -15,6 +15,7 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
+@EqualsAndHashCode
 @Table(name = "files")
 @Entity
 public class File {
@@ -32,24 +33,29 @@ public class File {
     private String type;
 
     @Column(name = "size")
+    @EqualsAndHashCode.Exclude
     private Float size;
 
     @Enumerated(value = EnumType.STRING)
+    @EqualsAndHashCode.Exclude
     private FileStatus status;
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "created")
+    @EqualsAndHashCode.Exclude
     private Date created;
 
     @Temporal(TemporalType.TIMESTAMP)
     @UpdateTimestamp
     @Column(name = "last_modified")
+    @EqualsAndHashCode.Exclude
     private Date lastModified;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private User user;
 
     public File(String path) {
@@ -65,6 +71,7 @@ public class File {
         this.status = FileStatus.ACTIVE;
     }
 
+    @EqualsAndHashCode.Include
     public String getFileName(){
         return name + "." + type;
     }

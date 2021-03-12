@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserData {
 
+    private Long id;
     private String firstName;
     private String lastName;
     private String bucket;

@@ -25,11 +25,9 @@ public class User {
     private String lastName;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @ToString.Exclude
     private List<File> files = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @ToString.Exclude
     private List<Event> events = new ArrayList<>();
 
     public User(String firstName, String lastName) {
