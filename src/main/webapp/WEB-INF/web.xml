@@ -33,36 +33,36 @@
 
   <servlet-mapping>
     <servlet-name>UploadServlet</servlet-name>
-    <url-pattern>/upload</url-pattern>
+    <url-pattern>/api/upload</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>InformServlet</servlet-name>
-    <url-pattern>/users/get</url-pattern>
+    <url-pattern>/api/get/users</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DeleteFileServlet</servlet-name>
-    <url-pattern>/del/file</url-pattern>
+    <url-pattern>/api/get/files</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>EventServlet</servlet-name>
-    <url-pattern>/info/event</url-pattern>
+    <url-pattern>/info/events</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>
     <servlet-name>ErrorServlet</servlet-name>
-    <url-pattern>/Error</url-pattern>
+    <url-pattern>/api/Error</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>DownloadServlet</servlet-name>
-    <url-pattern>/download</url-pattern>
+    <url-pattern>/api/downloads</url-pattern>
   </servlet-mapping>
 
   <error-page>
     <error-code>404</error-code>
-    <location>/Error</location>
+    <location>/api/Error</location>
   </error-page>
   <error-page>
     <exception-type>java.lang.Error</exception-type>
-    <location>/Error</location>
+    <location>/api/Error</location>
   </error-page>
 </web-app>

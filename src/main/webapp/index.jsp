@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+<h2>RestCRUDApplication</h2>
 </body>
 </html>
