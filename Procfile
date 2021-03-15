@@ -1,0 +1,1 @@
+web: java -war target/RestCRUDApplication-1.0.war
