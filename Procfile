@@ -1,1 +1,1 @@
-web: java -war target/RestCRUDApplication.war
+web: java -jar target/RestCRUDApplication.jar
