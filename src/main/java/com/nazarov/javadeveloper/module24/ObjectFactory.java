@@ -37,7 +37,7 @@ public class ObjectFactory {
         return new Configuration()
                 .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect")
                 .setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver")
-                .setProperty("hibernate.connection.url", System.getenv("DATABASE_URL"))
+                .setProperty("hibernate.connection.url", System.getenv("HIBERNATE_CONNECTION_URL"))
                 .addAnnotatedClass(Event.class)
                 .addAnnotatedClass(File.class)
                 .addAnnotatedClass(User.class)
