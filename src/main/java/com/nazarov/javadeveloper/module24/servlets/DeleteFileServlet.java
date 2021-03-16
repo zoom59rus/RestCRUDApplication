@@ -29,8 +29,10 @@ public class DeleteFileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         PrintWriter pw = resp.getWriter();
+        Long userId;
         String fileName;
         try{
+            userId = Long.parseLong(req.getParameter("userid"));
             fileName = req.getParameter("filename");
         }catch (NumberFormatException e){
             resp.setStatus(502);
@@ -38,7 +40,7 @@ public class DeleteFileServlet extends HttpServlet {
         }
 
         try {
-            mainService.removeFile(fileName);
+            mainService.removeFile(userId, fileName);
         } catch (NotFoundException e) {
             e.printStackTrace();
         }

@@ -24,8 +24,8 @@ public class EventServlet extends HttpServlet {
         Long fileId = null;
 
         try{
-            userId = Long.parseLong(req.getParameter("userId"));
-            fileId = Long.parseLong(req.getParameter("fileId"));
+            userId = Long.parseLong(req.getParameter("userid"));
+            fileId = Long.parseLong(req.getParameter("fileid"));
         }catch (NumberFormatException e){
             resp.setStatus(502);
             throw new Error("Invalid id on file ");

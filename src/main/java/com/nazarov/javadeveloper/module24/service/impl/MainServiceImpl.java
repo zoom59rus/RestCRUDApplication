@@ -81,8 +81,8 @@ public class MainServiceImpl implements MainService {
     }
 
     @Override
-    public void removeFile(String fileName) throws NotFoundException {
-        List<File> files = getFileLists(13L);
+    public void removeFile(Long userId, String fileName) throws NotFoundException {
+        List<File> files = getFileLists(userId);
         File find = files.stream().filter(f -> f.getFileName().equals(fileName)).findFirst().orElse(null);
         if (find == null) {
             throw new NotFoundException("File is " + fileName + " not found");
