@@ -19,10 +19,11 @@ public class DownloadServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         PrintWriter pw = resp.getWriter();
+        Long id = Long.parseLong(req.getParameter("id"));
         String fileName = req.getParameter("filename");
         String downloadPath = req.getParameter("path");
 
-        File find = mainService.getFileLists(13L).stream().filter(f -> f.getFileName().equals(fileName)).findFirst().orElse(null);
+        File find = mainService.getFileLists(id).stream().filter(f -> f.getFileName().equals(fileName)).findFirst().orElse(null);
         if(find == null){
             resp.setStatus(502);
             throw new Error("File is " + fileName + " not found");
