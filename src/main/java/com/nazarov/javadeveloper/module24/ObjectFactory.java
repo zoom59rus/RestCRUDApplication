@@ -36,8 +36,9 @@ public class ObjectFactory {
         System.getenv("DATABASE_URL");
         return new Configuration()
                 .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect")
-                .setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver")
-                .setProperty("hibernate.connection.url", System.getenv("HIBERNATE_CONNECTION_URL"))
+                .setProperty("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver")
+//                .setProperty("hibernate.connection.url", System.getenv("HIBERNATE_CONNECTION_URL"))
+                .setProperty("hibernate.connection.url", "jdbc:mysql://bfa2d2289b2825:ea530833@us-cdbr-east-03.cleardb.com/heroku_6085da32ed74e00?reconnect=true")
                 .addAnnotatedClass(Event.class)
                 .addAnnotatedClass(File.class)
                 .addAnnotatedClass(User.class)

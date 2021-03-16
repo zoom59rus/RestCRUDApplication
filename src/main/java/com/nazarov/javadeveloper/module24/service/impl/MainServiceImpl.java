@@ -33,7 +33,9 @@ public class MainServiceImpl implements MainService {
             return null;
         }
         String[] fNameType = result.key().split("\\.");
-        User user = userService.load(userData.getId());
+//        User user = userService.load(userData.getId());
+        User user = new User(userData.getFirstName(), userData.getLastName());
+        user = userService.save(user);
 
         File file = new File();
         file.setName(fNameType[0]);
