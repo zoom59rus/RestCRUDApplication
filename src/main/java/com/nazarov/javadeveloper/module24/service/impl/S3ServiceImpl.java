@@ -5,6 +5,8 @@ import com.nazarov.javadeveloper.module24.repository.impl.S3RepositoryImpl;
 import com.nazarov.javadeveloper.module24.service.S3Service;
 import software.amazon.awssdk.services.s3.model.S3Object;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 public class S3ServiceImpl implements S3Service {
@@ -16,7 +18,11 @@ public class S3ServiceImpl implements S3Service {
 
     @Override
     public S3Object upload(String path, String bucket) {
-        return s3Repository.upload(path, bucket);
+        if(Files.exists(Paths.get(path))){
+            return s3Repository.upload(path, bucket);
+        }
+
+        return null;
     }
 
     @Override
