@@ -33,7 +33,6 @@ public class MainServiceImpl implements MainService {
             return null;
         }
         String[] fNameType = result.key().split("\\.");
-//        User user = userService.load(userData.getId());
         User user = new User(userData.getFirstName(), userData.getLastName());
         user = userService.save(user);
 
@@ -92,6 +91,11 @@ public class MainServiceImpl implements MainService {
         find.setStatus(FileStatus.DELETED);
 
         fileService.update(find);
+        Event event = new Event();
+        User user = userService.load(userId);
+        event.setUser(user);
+        event.setFile(find);
+        eventService.save(event);
     }
 
     @Override
