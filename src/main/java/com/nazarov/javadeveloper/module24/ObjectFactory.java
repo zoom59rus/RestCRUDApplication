@@ -7,6 +7,7 @@ import com.nazarov.javadeveloper.module24.service.MainService;
 import com.nazarov.javadeveloper.module24.service.impl.MainServiceImpl;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.dialect.MySQLDialect;
 
 import javax.persistence.Id;
 import java.util.HashMap;
@@ -32,7 +33,11 @@ public class ObjectFactory {
     }
 
     private SessionFactory createSessionFactory(){
+        System.getenv("DATABASE_URL");
         return new Configuration()
+                .setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect")
+                .setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver")
+                .setProperty("hibernate.connection.url", System.getenv("DATABASE_URL"))
                 .addAnnotatedClass(Event.class)
                 .addAnnotatedClass(File.class)
                 .addAnnotatedClass(User.class)
