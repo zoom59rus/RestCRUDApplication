@@ -15,5 +15,5 @@ public interface MainService {
     List<File> getFileLists(Long userId);
     void removeFile(String fileName) throws NotFoundException;
     void downloadFile(String fileName, String path);
-    List<Event> getEventList(Long fileId);
+    List<Event> getEventList(Long userId, Long fileId);
 }

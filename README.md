@@ -32,7 +32,7 @@ User -> List<File> files + List<Events>
 ## Описание REST API
 Приложение доступно по адресу: https://calm-badlands-50889.herokuapp.com  
   
-GET /api/events?fileid=? - Получение лога файла. Передаваемый параметр id файла.  
+GET /api/events?userid=?&fileid=? - Получение лога файла. Передаваемый параметр id юзера и id файла.  
 GET /api/downloads?id=?&filename=?&path=? - Скачать файл по его названию. Параметры: id пользователя, имя файла и место сохранения.  
 GET /api/files?id=? - Получить список всех файлов пользователя. Передаваемый параметр id пользователя.  
 POST /api/del/files?filename=? - Удалить файл по его имени. Передаваемый параметр имя файла с расширением.  

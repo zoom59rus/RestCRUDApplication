@@ -20,21 +20,23 @@ public class EventServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         PrintWriter pw = resp.getWriter();
-        Long id = null;
+        Long userId = null;
+        Long fileId = null;
 
         try{
-            id = Long.parseLong(req.getParameter("fileid"));
+            userId = Long.parseLong(req.getParameter("userId"));
+            fileId = Long.parseLong(req.getParameter("fileId"));
         }catch (NumberFormatException e){
             resp.setStatus(502);
-            throw new Error("Invalid id on file " + id);
+            throw new Error("Invalid id on file ");
         }
 
-        List<Event> events = mainService.getEventList(id);
+        List<Event> events = mainService.getEventList(userId, fileId);
         StringBuilder sb = new StringBuilder();
         for (Event event : events) {
             sb.append("Create: ").append(event.getTime()).append("<br>")
-                    .append("UserId: ").append(13).append("<br>")
-                    .append("FileId: ").append(id).append("<br>")
+                    .append("UserId: ").append(userId).append("<br>")
+                    .append("FileId: ").append(fileId).append("<br>")
                     .append("<hr>").append("\n");
         }
         pw.println(HtmlParts.page("Event print page", sb.toString()));

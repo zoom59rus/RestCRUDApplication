@@ -104,8 +104,8 @@ public class MainServiceImpl implements MainService {
     }
 
     @Override
-    public List<Event> getEventList(Long fileId) {
-        return eventService.getAll(13L).stream()
+    public List<Event> getEventList(Long userId, Long fileId) {
+        return eventService.getAll(userId).stream()
                 .filter(e -> e.getFile().getId().equals(fileId))
                 .collect(Collectors.toList());
     }
